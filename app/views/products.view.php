@@ -2,7 +2,7 @@
 
 class ProductsView {             
     
-    //TENGO TODO MEZCLADO EN ESTA CATERGORIA//HACER REFACT ASAP
+    //TENGO TODO MEZCLADO EN ESTA CATERGORIA//HACER REFACT CON SMARTY
     function showProducts($products){
         require_once 'templates/header.php';
         echo '
@@ -25,37 +25,37 @@ class ProductsView {
 
         echo '
         <form action="insertarProducto" method="POST" class="my-4">
-                <div class="row">
-                    <div class="col-9">
-                        <div class="form-group">
-                            <label>Marca</label>
-                            <input name="marca" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Talle</label>
-                    <textarea name="talle" class="form-control" rows="3"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Color</label>
-                    <textarea name="color" class="form-control" rows="3"></textarea>
-                </div>
-                <div class="col-3">
+            <div class="row">
+                <div class="col-9">
                     <div class="form-group">
-                        <h4>Categoria</h4>
-                            <select name="id_categorias" class="form-control" type="text">
-                                <option value="1">ZAPATILLA</option>
-                                <option value="2">ZAPATO</option>
-                                <option value="3">BOTINES</option>
-                                <option value="4">OJOTAS</option>
-                                <option value="5">SANDALIAS</option>
-                                <option value="6">BORCEGO</option>
-                            </select>
+                        <label>Marca</label>
+                        <input name="marca" type="text" class="form-control">
                     </div>
-            </div> 
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Talle</label>
+                <textarea name="talle" class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Color</label>
+                <textarea name="color" class="form-control" rows="3"></textarea>
+            </div>
+            
+                <div class="form-group">
+                    <h4>Categoria</h4>
+                    <select name="id_categorias" class="form-control" type="text">
+                            <option value="1">ZAPATILLA</option>
+                            <option value="2">ZAPATO</option>
+                            <option value="3">BOTINES</option>
+                            <option value="4">OJOTAS</option>
+                            <option value="5">SANDALIAS</option>
+                            <option value="6">BORCEGO</option>
+                    </select>
+                </div>
+            
                 <button type="submit" class="btn btn-success">Agregar producto</button>
         </form>
         ';
