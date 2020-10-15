@@ -59,11 +59,11 @@ class ProductsModel {
     }
 
     //inserta el producto en la base de datos
-    function insertProduct($marca, $talle, $color) {
+    function insertProduct($marca, $talle, $color, $id_categorias) {
 
         //2. Enviamos la consulta y nos devuelve el resultado (prepare y execute)
-        $query = $this->db->prepare('INSERT INTO producto (marca, talle, color) VALUES (?, ?, ?)');
-        $query->execute([$marca, $talle, $color]);
+        $query = $this->db->prepare('INSERT INTO producto (marca, talle, color, id_categorias) VALUES (?, ?, ?, ?)');
+        $query->execute([$marca, $talle, $color, $id_categorias]);
 
         //3. Obtengo y devuelvo el ID de la categoria nueva
         return $this->db->lastInsertId();

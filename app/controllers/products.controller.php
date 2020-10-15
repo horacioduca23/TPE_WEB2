@@ -63,7 +63,7 @@ class ProductsController {
         $marca = $_POST['marca'];
         $talle = $_POST['talle'];
         $color = $_POST['color'];
-
+        $id_categorias = $_POST['id_categorias'];
         // Verifico campos obligatorios
         if (empty($marca) || empty($talle)){
             $this->view->showError('Faltan datos obligatorios');
@@ -71,7 +71,8 @@ class ProductsController {
         }
     
         // Inserto el producto en la DB
-        $id = $this->model->insertProduct($marca, $talle, $color);
+        $id = $this->model->insertProduct($marca, $talle, $color, $id_categorias);
+
         // Redirigimos a products
         header("Location: " . BASE_URL . "products"); 
     }

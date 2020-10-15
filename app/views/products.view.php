@@ -10,9 +10,6 @@ class ProductsView {
         
         <h2>PRODUCTOS</h2>
         
-        <form action="">
-        
-        </form>
 
         ';
         
@@ -26,7 +23,6 @@ class ProductsView {
         }
         echo "</ul>";
 
-        require_once 'templates/select_products.php';
         echo '
         <form action="insertarProducto" method="POST" class="my-4">
                 <div class="row">
