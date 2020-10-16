@@ -3,7 +3,7 @@
 class ProductsView {             
     
     //TENGO TODO MEZCLADO EN ESTA CATERGORIA//HACER REFACT CON SMARTY
-    function showProducts($products){
+    function showProducts($products, $categories){
         require_once 'templates/header.php';
         echo '
         <h1>BIENVENIDOS A ZAPATILLERIA ONLINE</h1>
@@ -24,7 +24,7 @@ class ProductsView {
         echo "</ul>";
 
         echo '
-        <form action="insertarProducto" method="POST" class="my-4">
+            <form action="insertarProducto" method="POST" class="my-4">
             <div class="row">
                 <div class="col-9">
                     <div class="form-group">
@@ -47,12 +47,11 @@ class ProductsView {
                 <div class="form-group">
                     <h4>Categoria</h4>
                     <select name="id_categorias" class="form-control" type="text">
-                            <option value="1">ZAPATILLA</option>
-                            <option value="2">ZAPATO</option>
-                            <option value="3">BOTINES</option>
-                            <option value="4">OJOTAS</option>
-                            <option value="5">SANDALIAS</option>
-                            <option value="6">BORCEGO</option>
+        ';    
+                    foreach($categories as $category){
+                        echo "<option value='$category->id'>$category->nombre</option>";
+                    }
+        echo '
                     </select>
                 </div>
             

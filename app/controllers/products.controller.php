@@ -1,17 +1,17 @@
 <?php
 require_once 'app/models/products.model.php';
 require_once 'app/views/products.view.php';
-
+require_once 'app/models/categories.model.php';
 
 class ProductsController {
 
     private $model;
     private $view;
-
+    private $modelCategories;
     function __construct() {
         $this->model = new ProductsModel();
         $this->view = new ProductsView();
-        
+        $this->modelCategories = new CategoriesModel();
         //LA VERIFICACION SIEMPRE ES RESPONSABILIDAD DEL CONTROLADOR
         //verifico que el usuario este logeado
         $this->checkLogged();
@@ -20,10 +20,11 @@ class ProductsController {
 
     function showProducts(){
 
+        $categories = $this->modelCategories->getAll();
         $products = $this->model->getAll();
         
         //actualizo la view
-        $this->view->showProducts($products);
+        $this->view->showProducts($products, $categories);
 
     }
 

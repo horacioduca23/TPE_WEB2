@@ -30,7 +30,7 @@
                         <a class="nav-link" href="products">Productos Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about">About</a>
+                        <a class="nav-link" href="about">About (en construccion)</a>
                     </li>
                     <li class="nav-item ml-auto">
                         <a class="nav-link" href="logout" name="user_logged">admin@zapatilleria.com (LOGOUT)</a>
