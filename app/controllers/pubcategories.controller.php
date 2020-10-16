@@ -10,6 +10,7 @@ class PubCategoriesController {
     function __construct() {
         $this->model = new PubCategoriesModel();
         $this->view = new PubCategoriesView();
+        session_start();
     }
 
     //Muestra el home para usuarios publicos

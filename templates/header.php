@@ -24,17 +24,31 @@
                         <a class="nav-link" href="verProductoPublico">Productos <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="categories">Categorias Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="products">Productos Admin</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="about">About (en construccion)</a>
                     </li>
-                    <li class="nav-item ml-auto">
-                        <a class="nav-link" href="logout" name="user_logged">admin@zapatilleria.com (LOGOUT)</a>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#" >Registrarse (en construccion)</a>
                     </li>
+                    <li class="nav-item ml-auto">
+                        
+                        <a class="nav-link" href="login">Login</a>
+                    </li>
+                    <?php
+                    if (isset($_SESSION['ID_USER'])) {
+                    
+                        echo '                
+                            <li class="nav-item">
+                                <a class="nav-link" href="categories">Categorias Admin</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="products">Productos Admin</a>
+                            </li>
+                            <li class="nav-item ml-auto">
+                            <a class="nav-link" href="logout" name="user_logged">admin@zapatilleria.com (LOGOUT)</a>
+                            </li>
+                        ';
+                    }
+                    ?>
                 </ul>
             </div>
         </nav>

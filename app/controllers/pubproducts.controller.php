@@ -12,6 +12,7 @@ class PubProductsController {
     function __construct() {
         $this->model = new PubProductsModel();
         $this->view = new PubProductsView();
+        session_start();
     }
 
 
