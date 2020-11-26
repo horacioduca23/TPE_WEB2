@@ -28,7 +28,6 @@ class AuthController {
         //obtengo el usuario
         $user = $this->model->getByEmail($email);
 
-
         // Si el usuario existe y las contraseñas existen..
         if ($user && password_verify($password, $user->password)) {
 

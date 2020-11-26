@@ -7,25 +7,34 @@ class ProductsController {
 
     private $model;
     private $view;
-    private $modelCategories;
+    private $CategoriesModel;
     function __construct() {
         $this->model = new ProductsModel();
         $this->view = new ProductsView();
-        $this->modelCategories = new CategoriesModel();
+        $this->CategoriesModel = new CategoriesModel();
         //LA VERIFICACION SIEMPRE ES RESPONSABILIDAD DEL CONTROLADOR
         //verifico que el usuario este logeado
-        $this->checkLogged();
+        //$this->checkLogged();
     }
 
 
     function showProducts(){
 
-        $categories = $this->modelCategories->getAll();
+        $this->checkLogged();
+        $categories = $this->CategoriesModel->getAll();
         $products = $this->model->getAll();
         
         //actualizo la view
         $this->view->showProducts($products, $categories);
 
+    }
+
+    function showProductsPublic(){
+        session_start();
+        $products = $this->model->getAll();
+        
+        //actualizo la view
+        $this->view->showPubProducts($products);
     }
 
     function showProductsDetails($id) {
@@ -34,7 +43,7 @@ class ProductsController {
     }
 
     function editProduct($id) {
-
+        $this->checkLogged();
         //llega el pedido del usuario para editar => le pido al model el id del producto en este caso
         $product = $this->model->get($id);
 
@@ -43,6 +52,7 @@ class ProductsController {
     }
 
     function saveProduct() {
+        $this->checkLogged();
         if(isset($_POST["botonGuardar"])){
             $marca = $_POST["marca"];
             $talle = $_POST["talle"];
@@ -55,12 +65,14 @@ class ProductsController {
     }
 
     function deleteProduct($id) {
+        $this->checkLogged();
         $this->model->remove($id);
         header("Location: " . BASE_URL . "products"); 
     }
 
     
     function addProduct() {
+        $this->checkLogged();
         $marca = $_POST['marca'];
         $talle = $_POST['talle'];
         $color = $_POST['color'];

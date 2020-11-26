@@ -18,6 +18,10 @@
         <label>Color</label>
         <textarea name="color" class="form-control" rows="3"></textarea>
     </div>
-
+    
+    <div class="form-group">
+        <h4>Categoria</h4>
+            {include 'select_products.tpl'}
+    </div>
     <button type="submit" class="btn btn-success">Agregar producto</button>
 </form>

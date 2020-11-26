@@ -2,8 +2,7 @@
 require_once 'app/controllers/categories.controller.php';
 require_once 'app/controllers/products.controller.php';
 require_once 'app/controllers/auth.controller.php';
-require_once 'app/controllers/pubcategories.controller.php';
-require_once 'app/controllers/pubproducts.controller.php';
+
 // defino la base url para la construccion de links con urls semánticas
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
@@ -91,21 +90,21 @@ switch ($params[0]) {
     
     // Rutas Publicas
     case 'home':
-        $controller = new PubCategoriesController();
+        $controller = new CategoriesController();
         $controller->showHome();
     break;
-    case 'verPubCategoria':    // Muestra productos de una cat específica
-        $controller = new PubCategoriesController();            
+/*     case 'verPubCategoria':    // Muestra productos de una cat específica
+        $controller = new CategoriesController();            
         $controller->showPubCategory($params[1]);
-    break;
+    break; */
     case 'verProductoPublico':    //Muestra todos los productos
-        $controller = new PubProductsController();            
+        $controller = new ProductsController();            
         $controller->showProductsPublic();
     break;
-    case 'verDetallesPublico':    // Muestra descripcion de un producto
+/*     case 'verDetallesPublico':    // Muestra descripcion de un producto
         $controller = new PubProductsController();            
         $controller->showPubProductsDetails($params[1]);
-    break;
+    break; */
     default:
         header("HTTP/1.0 404 Not Found");
         echo('404 Page not found');

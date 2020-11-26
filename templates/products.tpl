@@ -16,23 +16,23 @@
         
         <h1>BIENVENIDOS A ZAPATILLERIA ONLINE</h1>
         
-        <h2>CATEGORÍAS</h2>
-            <ul class='list-group list-group-flush mt-5'>
-                {foreach from=$categories item=category}
+        <h2>PRODUCTOS</h2>
+        
+            <ul class='list-group list-group-flush mt-5'>      
+                {foreach from=$products item=product}
                     <li class='list-group-item'>
-                        <li><a href='verCategoria/{$category->id}'>{$category->nombre}</a></li> <p>{$category->descripcion}</p>
-                        <a class='btn btn-warning btn-sm' href='editarCategoria/{$category->id}'>EDITAR</a>
-                        <a class='btn btn-danger btn-sm' href='eliminarCategoria/{$category->id}'>ELIMINAR</a>
-                    </li>
-                {/foreach}  
+                        <li><a href='verProducto/{$product->id}'>{$product->marca}</a></li> <p>{$product->talle}</p> <p>{$product->color}</p>
+                        <a class='btn btn-warning btn-sm' href='editarProducto/{$product->id}'>EDITAR</a>
+                        <a class='btn btn-danger btn-sm' href='eliminarProducto/{$product->id}'>ELIMINAR</a>
+                    </li> 
+                {/foreach}
             </ul>
-    
-        {include 'form_alta.tpl'}
+      
+        {include 'form_products.tpl'}
 
     </main> <!-- Fin del contenido principal -->
 
 {include 'footer.tpl'}
 
 </body>
-</html>
-    
+</html> 

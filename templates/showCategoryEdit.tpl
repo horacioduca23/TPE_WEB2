@@ -17,17 +17,20 @@
         <h1>BIENVENIDOS A ZAPATILLERIA ONLINE</h1>
         
         <h2>CATEGORÍAS</h2>
-            <ul class='list-group list-group-flush mt-5'>
-                {foreach from=$categories item=category}
-                    <li class='list-group-item'>
-                        <li><a href='verCategoria/{$category->id}'>{$category->nombre}</a></li> <p>{$category->descripcion}</p>
-                        <a class='btn btn-warning btn-sm' href='editarCategoria/{$category->id}'>EDITAR</a>
-                        <a class='btn btn-danger btn-sm' href='eliminarCategoria/{$category->id}'>ELIMINAR</a>
-                    </li>
-                {/foreach}  
-            </ul>
-    
-        {include 'form_alta.tpl'}
+                      
+        <h1>Edite la Categoria: {$category->nombre}</h1>
+
+        <form action="guardarCategoria/{$category->nombre}" method="POST" class="my-4">
+
+            <input name="idCategoria" type="hidden" value="{$category->id}">
+
+            <p>Nombre: <input type="text" name="nombre" value="{$category->nombre}"></p>   
+
+            <p>Descripcion: <input type="text" name="descripcion" value="{$category->descripcion}"></p>  
+
+            
+            <input type="submit" name="botonGuardar" class="btn btn-info" value="Guardar">
+        </form>
 
     </main> <!-- Fin del contenido principal -->
 

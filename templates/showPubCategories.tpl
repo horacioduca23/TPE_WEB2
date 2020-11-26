@@ -21,13 +21,9 @@
                 {foreach from=$categories item=category}
                     <li class='list-group-item'>
                         <li><a href='verCategoria/{$category->id}'>{$category->nombre}</a></li> <p>{$category->descripcion}</p>
-                        <a class='btn btn-warning btn-sm' href='editarCategoria/{$category->id}'>EDITAR</a>
-                        <a class='btn btn-danger btn-sm' href='eliminarCategoria/{$category->id}'>ELIMINAR</a>
                     </li>
                 {/foreach}  
             </ul>
-    
-        {include 'form_alta.tpl'}
 
     </main> <!-- Fin del contenido principal -->
 

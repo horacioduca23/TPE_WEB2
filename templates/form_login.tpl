@@ -1,6 +1,4 @@
-
-<!-- En donde lo incluya tiene que estar el header.php -->
-    <!--Form Login -->
+<!--Form Login -->
 <div class="mt-5 w-25 m-auto">
     <form method="POST" action="verify">
         <div class="form-group mt-5">

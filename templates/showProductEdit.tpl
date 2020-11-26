@@ -16,18 +16,22 @@
         
         <h1>BIENVENIDOS A ZAPATILLERIA ONLINE</h1>
         
-        <h2>CATEGORÍAS</h2>
-            <ul class='list-group list-group-flush mt-5'>
-                {foreach from=$categories item=category}
-                    <li class='list-group-item'>
-                        <li><a href='verCategoria/{$category->id}'>{$category->nombre}</a></li> <p>{$category->descripcion}</p>
-                        <a class='btn btn-warning btn-sm' href='editarCategoria/{$category->id}'>EDITAR</a>
-                        <a class='btn btn-danger btn-sm' href='eliminarCategoria/{$category->id}'>ELIMINAR</a>
-                    </li>
-                {/foreach}  
-            </ul>
-    
-        {include 'form_alta.tpl'}
+        <h2>PRODUCTOS</h2>
+                      
+        <h1>Edite el producto: {$product->marca}</h1>
+
+        <form action="guardarProducto/{$product->marca}" method="POST" class="my-4">
+
+            <input name="idProducto" type="hidden" value="{$product->id}">
+
+            <p>Ingrese la nueva marca: <input type="text" name="marca" value="{$product->marca}"></p>   
+
+            <p>Ingrese el nuevo talle: <input type="text" name="talle" value="{$product->talle}"></p>  
+
+            <p>Ingrese el nuevo color: <input type="text" name="color" value="{$product->color}"></p>  
+          
+            <input type="submit" name="botonGuardar" class="btn btn-info" value="Guardar">
+        </form>
 
     </main> <!-- Fin del contenido principal -->
 

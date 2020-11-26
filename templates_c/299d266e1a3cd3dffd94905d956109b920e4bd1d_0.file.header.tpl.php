@@ -1,4 +1,27 @@
-<header>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-11-26 22:52:13
+  from 'C:\xampp\htdocs\TPE_WEB2\templates\header.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5fc0238d7b4114_11893881',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '299d266e1a3cd3dffd94905d956109b920e4bd1d' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\TPE_WEB2\\templates\\header.tpl',
+      1 => 1606427531,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5fc0238d7b4114_11893881 (Smarty_Internal_Template $_smarty_tpl) {
+?><header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">ZAPATILLERIA ONLINE</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,7 +46,7 @@
                     <a class="nav-link" href="login">Login</a>
                 </li>
 
-                {if isset($smarty.session.ID_USER)}
+                <?php if ((isset($_SESSION['ID_USER']))) {?>
               
                         <li class="nav-item">
                             <a class="nav-link" href="categories">Categorias Admin</a>
@@ -35,9 +58,10 @@
                         <a class="nav-link" href="logout" name="user_logged">admin@zapatilleria.com (LOGOUT)</a>
                         </li>
                     
-                {/if}
+                <?php }?>
             
             </ul>
         </div>
     </nav>
-</header>
+</header><?php }
+}
