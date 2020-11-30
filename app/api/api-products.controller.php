@@ -11,6 +11,12 @@ class ApiProductsController {
     function __construct(){
         $this->model = new ProductsModel();
         $this->view = new APIView();
+        $this->data = file_get_contents("php://input");
+    }
+
+    // Lee la variable asociada a la entrada estandar y la convierte en JSON
+    function getData(){ 
+        return json_decode($this->data); 
     }
 
     function getAll($params = null) {
@@ -32,9 +38,47 @@ class ApiProductsController {
         $idProduct = $params[':ID'];
         $success = $this->model->remove($idProduct);
         if ($success) {
-            $this->view->response("La tarea con el ID=$idProduct se borró exitosamente", 200);
+            $this->view->response("El producto con el ID=$idProduct se borró exitosamente", 200);
         } else {
             $this->view->response("No existe el producto con id=$idProduct", 404);
         }   
     }
+
+    function add($params = null) {
+        $body = $this->getData();
+      
+        $marca  = $body->marca;
+        $talle  = $body->talle;
+        $color  = $body->color;
+        $id_categorias = $body->id_categorias;
+
+        $id = $this->model->insert($marca, $talle, $color, $id_categorias);
+
+        if ($id > 0) {
+            $this->view->response("El producto con el ID=$id se agregó exitosamente.", 200);
+        } else {
+            $this->view->response("El producto no se pudo agregar.", 500);
+        }
+
+    }
+
+    function edit($params = null) {
+        $idProduct = $params[':ID'];
+        $body = $this->getData();
+      
+        $marca  = $body->marca;
+        $talle  = $body->talle;
+        $color  = $body->color;
+        $id_categorias = $body->id_categorias;
+
+        $success = $this->model->update($idProduct, $marca, $talle, $color, $id_categorias);
+
+        if ($success) {
+            $this->view->response("El producto con el ID=$idProduct se actualizo exitosamente.", 200);
+        } else {
+            $this->view->response("El producto no se pudo actualizar.", 400);
+        }
+
+    }
+
 }

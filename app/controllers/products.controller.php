@@ -88,7 +88,7 @@ class ProductsController {
         }
     
         // Inserto el producto en la DB
-        $id = $this->model->insertProduct($marca, $talle, $color, $id_categorias);
+        $id = $this->model->insert($marca, $talle, $color, $id_categorias);
 
         // Redirigimos a products
         header("Location: " . BASE_URL . "products"); 

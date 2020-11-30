@@ -58,7 +58,7 @@ class ProductsModel {
     }
 
     //inserta el producto en la base de datos
-    function insertProduct($marca, $talle, $color, $id_categorias) {
+    function insert($marca, $talle, $color, $id_categorias) {
 
         //2. Enviamos la consulta y nos devuelve el resultado (prepare y execute)
         $query = $this->db->prepare('INSERT INTO producto (marca, talle, color, id_categorias) VALUES (?, ?, ?, ?)');
@@ -66,6 +66,16 @@ class ProductsModel {
 
         //3. Obtengo y devuelvo el ID de la categoria nueva
         return $this->db->lastInsertId();
+    }
+
+    function update($idProduct, $marca, $talle, $color, $id_categorias) {
+
+        //2. Enviamos la consulta y nos devuelve el resultado (prepare y execute)
+        $query = $this->db->prepare('UPDATE producto SET  marca = ?, talle = ?, color = ?, id_categorias = ? WHERE id = ?');
+        $result = $query->execute([$marca, $talle, $color, $id_categorias, $idProduct]);
+
+        //3. Devuelve el rdo de la ejecucion
+        return $result;
     }
 
 }
