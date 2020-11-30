@@ -30,7 +30,7 @@
         {include 'form_alta.tpl'}
 
     </main> <!-- Fin del contenido principal -->
-
+    
 {include 'footer.tpl'}
 
 </body>

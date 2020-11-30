@@ -1,19 +1,21 @@
 <?php
 require_once 'app/models/categories.model.php';
 require_once 'app/views/categories.view.php';
+require_once 'app/helpers/auth.helper.php';
 
 class CategoriesController {
     
     private $model;
     private $view;
+    private $authHelper;
 
     function __construct() {
         $this->model = new CategoriesModel();
         $this->view = new CategoriesView();
-        
+        $this->authHelper = new AuthHelper();
         //LA VERIFICACION SIEMPRE ES RESPONSABILIDAD DEL CONTROLADOR
         //verifico que el usuario este logeado
-        //$this->checkLogged();
+        //$this->authHelper->checkLogged();
 
     }
 
@@ -33,7 +35,7 @@ class CategoriesController {
         
         //LA VERIFICACION SIEMPRE ES RESPONSABILIDAD DEL CONTROLADOR
         //verifico que el usuario este logeado
-        $this->checkLogged();
+        $this->authHelper->checkLogged();
         
         //obtiene las CATEGORIAS del modelo (categories.model.php)
         $categories = $this->model->getAll();
@@ -46,7 +48,7 @@ class CategoriesController {
      * Inserta una categoria a la base de datos
      */
     function addCategory(){
-        $this->checkLogged();
+        $this->authHelper->checkLogged();
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
 
@@ -67,7 +69,7 @@ class CategoriesController {
      * Elimina la categoria del sistema o BD
      */
     function deleteCategory($id){
-        $this->checkLogged();
+        $this->authHelper->checkLogged();
         $this->model->remove($id);
         header("Location: " . BASE_URL);
     }
@@ -76,7 +78,7 @@ class CategoriesController {
      * Edito la categoria en la base de datos
      */
     function editCategory($id) {
-        $this->checkLogged();
+        $this->authHelper->checkLogged();
        //llega el pedido del usuario para editar => le pido al model el id de la categoria en este caso
         $category = $this->model->get($id);
 
@@ -88,7 +90,7 @@ class CategoriesController {
      * Guarda la categoria editada
      */
     function saveCategory() {    
-        $this->checkLogged();
+        $this->authHelper->checkLogged();
         if(isset($_POST["botonGuardar"])){
             $nombre = $_POST["nombre"];
             $descripcion = $_POST["descripcion"];
@@ -116,16 +118,6 @@ class CategoriesController {
         session_start();
     } */
 
-    //Barrera de seguridad para usuario logeado
-    function checkLogged(){
-        session_start();
-        if(!isset($_SESSION ['ID_USER'])) {
-            header("Location: " . BASE_URL . "login");
-            die;
-        }
-    }
-
-    
 
 }
 

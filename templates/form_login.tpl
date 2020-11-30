@@ -11,5 +11,5 @@
         </div>
         <div class="form-group form-check"> </div>
         <button type="submit" class="btn btn-dark">Log in</button>
-    </form>
+    </form><br>
 </div>

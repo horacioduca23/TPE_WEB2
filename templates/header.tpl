@@ -15,26 +15,26 @@
                 <li class="nav-item">
                     <a class="nav-link" href="about">About (en construccion)</a>
                 </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#" >Registrarse (en construccion)</a>
+                <li class="nav-item active">
+                <a class="nav-link" href="register" >Registrarse</a>
                 </li>
-                <li class="nav-item ml-auto">
-                    
+                <li class="nav-item ml-auto active">    
                     <a class="nav-link" href="login">Login</a>
                 </li>
 
                 {if isset($smarty.session.ID_USER)}
-              
                         <li class="nav-item">
                             <a class="nav-link" href="categories">Categorias Admin</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="products">Productos Admin</a>
                         </li>
-                        <li class="nav-item ml-auto">
-                        <a class="nav-link" href="logout" name="user_logged">admin@zapatilleria.com (LOGOUT)</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="permits">Permisos Admin</a>
                         </li>
-                    
+                        <li class="nav-item ml-auto">
+                        <a class="nav-link" href="logout" name="user_logged">{($smarty.session.EMAIL_USER)} (LOGOUT)</a>
+                        </li>            
                 {/if}
             
             </ul>

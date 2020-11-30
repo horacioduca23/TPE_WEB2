@@ -1,19 +1,17 @@
 <?php
 
+require_once 'app/helpers/db.helper.php';
+
 class CategoriesModel {
     
     private $db;
+    private $dbHelper;
 
     function __construct() {
-        $this->db = $this->connect();
-    }
 
-    /**
-     * Abro conexión a la base de datos;
-     */
-    private function connect() {
-        $db = new PDO('mysql:host=localhost;' .'dbname=db_zapatilleria;charset=utf8' , 'root', '');
-        return $db;
+        $this->dbHelper = new DBHelper();
+
+        $this->db = $this->dbHelper->connect();
     }
     
     /**

@@ -1,23 +1,21 @@
 <?php
 
+require_once 'app/helpers/db.helper.php';
+
 class ProductsModel {
     
     private $db;
+    private $dbHelper;
 
     function __construct() {
-        $this->db = $this->connect();
+        
+        $this->dbHelper = new DBHelper();
+
+        $this->db = $this->dbHelper->connect();
     }
 
     /**
-     * Abro conexión a la base de datos;
-     */
-    private function connect() {
-        $db = new PDO('mysql:host=localhost;' .'dbname=db_zapatilleria;charset=utf8' , 'root', '');
-        return $db;
-    }
-    
-    /**
-     * Devuelve todas las categorias de la base de datos
+     * Devuelve todos los productos de la base de datos
      */
     function getAll(){
 
@@ -56,6 +54,7 @@ class ProductsModel {
     function remove($id) {
         $query = $this->db->prepare('DELETE FROM producto WHERE id = ?');
         $query->execute([$id]);
+        return $query->rowCount();
     }
 
     //inserta el producto en la base de datos

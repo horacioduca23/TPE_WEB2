@@ -18,4 +18,31 @@ class AuthView {
         $smarty->display('templates/showError.tpl');
 
     }
+
+    function showRegisterForm(){
+        
+        $smarty = new Smarty();
+
+        $smarty->display('templates/showRegisterForm.tpl');
+        
+    }
+
+    function viewUsers($users){
+        $smarty = new Smarty();
+
+        $smarty->assign('users', $users);
+
+        $smarty->display('templates/showUsers.tpl');
+
+    }
+
+    function showEditUser($user) {
+        $smarty = new Smarty();
+
+        $smarty->assign('user', $user);
+
+        $smarty->display('templates/showEditUser.tpl');
+
+    }
+
 }

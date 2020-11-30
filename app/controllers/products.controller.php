@@ -2,25 +2,29 @@
 require_once 'app/models/products.model.php';
 require_once 'app/views/products.view.php';
 require_once 'app/models/categories.model.php';
+require_once 'app/helpers/auth.helper.php';
 
 class ProductsController {
 
     private $model;
     private $view;
     private $CategoriesModel;
+    private $authHelper;
+
     function __construct() {
         $this->model = new ProductsModel();
         $this->view = new ProductsView();
         $this->CategoriesModel = new CategoriesModel();
+        $this->authHelper = new AuthHelper();
         //LA VERIFICACION SIEMPRE ES RESPONSABILIDAD DEL CONTROLADOR
         //verifico que el usuario este logeado
-        //$this->checkLogged();
+        //$this->authHelper->checkLogged();
     }
 
 
     function showProducts(){
 
-        $this->checkLogged();
+        $this->authHelper->checkLogged();
         $categories = $this->CategoriesModel->getAll();
         $products = $this->model->getAll();
         
@@ -43,7 +47,7 @@ class ProductsController {
     }
 
     function editProduct($id) {
-        $this->checkLogged();
+        $this->authHelper->checkLogged();
         //llega el pedido del usuario para editar => le pido al model el id del producto en este caso
         $product = $this->model->get($id);
 
@@ -52,7 +56,7 @@ class ProductsController {
     }
 
     function saveProduct() {
-        $this->checkLogged();
+        $this->authHelper->checkLogged();
         if(isset($_POST["botonGuardar"])){
             $marca = $_POST["marca"];
             $talle = $_POST["talle"];
@@ -65,14 +69,14 @@ class ProductsController {
     }
 
     function deleteProduct($id) {
-        $this->checkLogged();
+        $this->authHelper->checkLogged();
         $this->model->remove($id);
         header("Location: " . BASE_URL . "products"); 
     }
 
     
     function addProduct() {
-        $this->checkLogged();
+        $this->authHelper->checkLogged();
         $marca = $_POST['marca'];
         $talle = $_POST['talle'];
         $color = $_POST['color'];
@@ -88,15 +92,6 @@ class ProductsController {
 
         // Redirigimos a products
         header("Location: " . BASE_URL . "products"); 
-    }
-
-    //Barrera de seguridad para usuario logeado
-    function checkLogged(){
-        session_start();
-        if(!isset($_SESSION ['ID_USER'])) {
-            header("Location: " . BASE_URL . "login");
-            die;
-        }
     }
 
 }
