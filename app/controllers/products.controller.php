@@ -16,6 +16,7 @@ class ProductsController {
         $this->view = new ProductsView();
         $this->CategoriesModel = new CategoriesModel();
         $this->authHelper = new AuthHelper();
+        session_start();
         //LA VERIFICACION SIEMPRE ES RESPONSABILIDAD DEL CONTROLADOR
         //verifico que el usuario este logeado
         //$this->authHelper->checkLogged();
@@ -34,7 +35,6 @@ class ProductsController {
     }
 
     function showProductsPublic(){
-        session_start();
         $products = $this->model->getAll();
         
         //actualizo la view

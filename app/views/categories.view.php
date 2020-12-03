@@ -3,7 +3,7 @@
 require_once('libs/smarty/Smarty.class.php');
 
 class CategoriesView {             
-
+    
     function showCategories($categories)    {
         
         $smarty = new Smarty();

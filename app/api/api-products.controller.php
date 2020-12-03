@@ -15,7 +15,7 @@ class ApiProductsController {
     }
 
     // Lee la variable asociada a la entrada estandar y la convierte en JSON
-    function getData(){ 
+    function getData() { 
         return json_decode($this->data); 
     }
 
@@ -81,4 +81,8 @@ class ApiProductsController {
 
     }
 
+    function show404() {
+        $this->view->response("El recurso solicitado no existe.", 404);
+
+    }
 }

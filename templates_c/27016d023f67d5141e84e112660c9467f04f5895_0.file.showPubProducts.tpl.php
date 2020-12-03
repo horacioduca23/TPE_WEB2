@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-27 00:27:17
+/* Smarty version 3.1.34-dev-7, created on 2020-12-02 07:27:19
   from 'C:\xampp\htdocs\TPE_WEB2\templates\showPubProducts.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fc039d50ba068_22942016',
+  'unifunc' => 'content_5fc733c745aac9_15423910',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '27016d023f67d5141e84e112660c9467f04f5895' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE_WEB2\\templates\\showPubProducts.tpl',
-      1 => 1606433216,
+      1 => 1606890427,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fc039d50ba068_22942016 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc733c745aac9_15423910 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +32,10 @@ function content_5fc039d50ba068_22942016 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zapatilleria</title>
     <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"><?php echo '</script'; ?>
+>
 </head>
 <body>  
 

@@ -11,7 +11,7 @@ $router = new Router();
 
 // router-api de la parte de comentarios
 $router->addRoute('comments', 'GET', 'ApiCommentController', 'getAll'); //Obtengo todos los comentarios de la API
-$router->addRoute('products/:ID/comments','GET','ApiCommentController','getCommentByProduct');  //Muestra los comentarios de un producto en particular a partir del ID
+$router->addRoute('products/:ID/comments','GET','ApiCommentController','getCommentsByProduct');  //Muestra los comentarios de un producto en particular a partir del ID
 $router->addRoute('comments','POST','ApiCommentController','add');   //Agrega un comentario de forma CSR
 $router->addRoute('comments/:ID','DELETE','ApiCommentController','delete'); //Elimina un comentario s/ ID
 
@@ -23,6 +23,9 @@ $router->addRoute('products/:ID','GET','ApiProductsController','get');     //obt
 $router->addRoute('products/:ID','DELETE','ApiProductsController','delete');   //elimin prod por id
 $router->addRoute('products','POST','ApiProductsController','add');    //agrega un nuevo producto
 $router->addRoute('products/:ID','PUT','ApiProductsController','edit');  //edita un prod
+
+// Ruta error 404
+$router->setDefaultRoute('ApiProductsController', 'show404');
 
 // Rutea
 $router->route($_REQUEST['resource'], $_SERVER['REQUEST_METHOD']) ; // ve el recurso + el verbo (get, put, post, delete)    

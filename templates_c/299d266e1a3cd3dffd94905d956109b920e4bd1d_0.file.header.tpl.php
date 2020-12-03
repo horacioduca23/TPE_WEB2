@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-29 02:46:34
+/* Smarty version 3.1.34-dev-7, created on 2020-12-03 02:03:51
   from 'C:\xampp\htdocs\TPE_WEB2\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fc2fd7a45d755_67718824',
+  'unifunc' => 'content_5fc83977791f57_30053521',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '299d266e1a3cd3dffd94905d956109b920e4bd1d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE_WEB2\\templates\\header.tpl',
-      1 => 1606614393,
+      1 => 1606957430,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fc2fd7a45d755_67718824 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc83977791f57_30053521 (Smarty_Internal_Template $_smarty_tpl) {
 ?><header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">ZAPATILLERIA ONLINE</a>
@@ -45,7 +45,7 @@ function content_5fc2fd7a45d755_67718824 (Smarty_Internal_Template $_smarty_tpl)
                     <a class="nav-link" href="login">Login</a>
                 </li>
 
-                <?php if ((isset($_SESSION['ID_USER']))) {?>
+                <?php if (((isset($_SESSION['ID_USER']))) && ($_SESSION['ROL'] == '1')) {?>
                         <li class="nav-item">
                             <a class="nav-link" href="categories">Categorias Admin</a>
                         </li>
@@ -55,11 +55,13 @@ function content_5fc2fd7a45d755_67718824 (Smarty_Internal_Template $_smarty_tpl)
                         <li class="nav-item">
                             <a class="nav-link" href="permits">Permisos Admin</a>
                         </li>
-                        <li class="nav-item ml-auto">
-                        <a class="nav-link" href="logout" name="user_logged"><?php echo ($_SESSION['EMAIL_USER']);?>
- (LOGOUT)</a>
-                        </li>            
                 <?php }?>
+                <?php if (((isset($_SESSION['ID_USER'])))) {?>
+                    <li class="nav-item ml-auto">
+                    <a class="nav-link" href="logout" name="user_logged"><?php echo ($_SESSION['EMAIL_USER']);?>
+ (LOGOUT)</a>
+                    </li> 
+                <?php }?>               
             
             </ul>
         </div>

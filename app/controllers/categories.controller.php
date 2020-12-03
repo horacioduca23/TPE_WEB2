@@ -13,6 +13,7 @@ class CategoriesController {
         $this->model = new CategoriesModel();
         $this->view = new CategoriesView();
         $this->authHelper = new AuthHelper();
+        session_start();
         //LA VERIFICACION SIEMPRE ES RESPONSABILIDAD DEL CONTROLADOR
         //verifico que el usuario este logeado
         //$this->authHelper->checkLogged();
@@ -21,7 +22,7 @@ class CategoriesController {
 
     //Muestra el home para usuarios publicos
     function showHome(){    
-        session_start();
+
         //obtiene las CATEGORIAS del modelo (categories.model.php)
         $categories = $this->model->getAll();
         

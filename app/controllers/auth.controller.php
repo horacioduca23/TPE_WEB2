@@ -13,6 +13,7 @@ class AuthController {
         $this->view = new AuthView();
         $this->model = new UserModel();
         $this->authHelper = new AuthHelper();
+        session_start();
     }
 
     function showLogin() {
@@ -45,7 +46,6 @@ class AuthController {
             } else if($_SESSION['ROL']==0) {
                 header("Location: " . BASE_URL . 'home');        
             }
-
 
         }else{
             $this->view->showError('Un momento, datos incorrectos!');
@@ -85,14 +85,15 @@ class AuthController {
             $this->view->showError($msg);
         }
     }
-
+    // Este metodo muestra los permisos para q el adm pueda editar rol de usuario. Deberia ir aqui?
     function showUsers() {
+        $this->authHelper->checkLogged();
         $users = $this->model->getUsers();
         $this->view->viewUsers($users);
-
     }
 
     function editUser($id) {
+        $this->authHelper->checkLogged();
         $user = $this->model->getUser($id);        //devuelve los datos del usuario para modificarlo
         $this->view->showEditUser($user);
     }
@@ -103,12 +104,11 @@ class AuthController {
         $rol = $_POST['rol'];
        
         $user=$this->model->getUser($idUser);
-        //var_dump($user);die;
         
-        if($user->rol==1 && $idUser!= $_SESSION['ID_USER']){
+/*         if($user->rol==1 && $idUser!= $_SESSION['ID_USER']){
             $msg = "No puedes editar un Usuario Administrador ";
             $this->view->showError($msg);die;
-        }
+        } */
         
         if($idUser!=$_SESSION['ID_USER']){
             $this->model->editUser($rol, $idUser);

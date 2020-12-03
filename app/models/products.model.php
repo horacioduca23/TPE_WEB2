@@ -30,7 +30,7 @@ class ProductsModel {
     }
 
     function getProductDetail($id) {
-        $query = $this->db->prepare("SELECT * FROM producto p JOIN categoria c ON p.id_categorias = c.id WHERE p.id_categorias = c.id AND p.id = ? "); // prepara la consulta
+        $query = $this->db->prepare("SELECT *,p.id as producto_id FROM producto p JOIN categoria c ON p.id_categorias = c.id WHERE p.id_categorias = c.id AND p.id = ?"); // prepara la consulta
         $query->execute([$id]); // ejecuta
         $details = $query->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
 

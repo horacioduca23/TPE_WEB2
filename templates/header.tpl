@@ -22,7 +22,7 @@
                     <a class="nav-link" href="login">Login</a>
                 </li>
 
-                {if isset($smarty.session.ID_USER)}
+                {if (isset($smarty.session.ID_USER)) && ($smarty.session.ROL=='1')}
                         <li class="nav-item">
                             <a class="nav-link" href="categories">Categorias Admin</a>
                         </li>
@@ -32,10 +32,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="permits">Permisos Admin</a>
                         </li>
-                        <li class="nav-item ml-auto">
-                        <a class="nav-link" href="logout" name="user_logged">{($smarty.session.EMAIL_USER)} (LOGOUT)</a>
-                        </li>            
                 {/if}
+                {if (isset($smarty.session.ID_USER))}
+                    <li class="nav-item ml-auto">
+                    <a class="nav-link" href="logout" name="user_logged">{($smarty.session.EMAIL_USER)} (LOGOUT)</a>
+                    </li> 
+                {/if}               
             
             </ul>
         </div>

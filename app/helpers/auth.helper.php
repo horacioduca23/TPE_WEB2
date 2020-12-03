@@ -14,14 +14,12 @@ class AuthHelper {
   
     //Barrera de seguridad para usuario logeado
     function checkLogged(){
-        session_start();
-        if(!isset($_SESSION ['ID_USER']) && !isset($_SESSION ['ROL']) == 1) {
+        if(!isset($_SESSION ['ID_USER']) || ($_SESSION ['ROL']) == 0) {
             header("Location: " . BASE_URL . "login");
             die;
         }else{
             return true;
         }
-
     }
 
     function logout() {

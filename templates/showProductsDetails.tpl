@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zapatilleria</title>
     <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>  
 
@@ -37,12 +38,20 @@
                     <td>{$details[0]->color}</td>
                 </tr>
             </tbody>    
-        </table>
+        </table><br>
 
+        <input id="idProd" type="hidden" value={$details[0]->producto_id}>
+        
+        {if isset($smarty.session.ID_USER)}
+        <input id="rol" type="hidden" value={$smarty.session.ROL}>
+
+        {include 'form_comments.tpl'}
+        {/if}
+        {include file='Vue/comments.vue'}
     </main> <!-- Fin del contenido principal -->
 
 {include 'footer.tpl'}
-
+<script src="js/comments.js"></script>
 </body>
 </html>
     
